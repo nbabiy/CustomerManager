@@ -1,4 +1,4 @@
-package com.nbabiy.customerManager.model;
+package com.nbabiy.customerManager.customer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
