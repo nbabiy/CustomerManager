@@ -2,21 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Customer Manager</title>
+    <title>Search Result</title>
 </head>
 <body>
 <div align="center">
-    <h2>Customer Manager</h2>
-    <form th:method="GET" th:action="@{/customers/search}">
-        <input type="text" name="keyword" />
-        <input type="submit" value="Search" />
-    </form>
-    <h3><a href="/customers/new">New Customer</a></h3>
+    <h2>Search Result</h2>
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -25,7 +15,7 @@
             <th>Address</th>
             <th>Action</th>
         </tr>
-        <div th:each="customer : ${customers}">
+        <div th:each="customer : ${result}">
             <tr>
                 <td th:text="${customer.getId()}"></td>
                 <td th:text="${customer.getName()}"></td>

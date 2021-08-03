@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author nazariibabii
@@ -63,6 +64,14 @@ public class CustomerController {
     public String delete(@PathVariable("id") Long id) {
         customerService.delete(id);
         return "redirect:/customers";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam("keyword") String keyword, Model model) {
+        List<Customer> customerList = customerService.search(keyword);
+        System.out.println(customerList);
+        model.addAttribute("result", customerList);
+        return "customers/search";
     }
 
 }

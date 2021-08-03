@@ -46,4 +46,8 @@ public class CustomerService {
     public void delete(Long id) {
         customerRepository.deleteById(id);
     }
+
+    public List<Customer> search(String keyword) {
+        return customerRepository.findAllByKeyword('%' + keyword + '%');
+    }
 }
