@@ -33,6 +33,10 @@
                 <td th:text="${customer.getAddress()}"></td>
                 <td>
                     <a th:href="@{/customers/{id}/edit(id=${customer.getId()})}">Edit</a>
+
+                    <form th:method="DELETE" th:action="@{/customers/{id}(id=${customer.getId()})}">
+                        <input type="submit" value="Delete">
+                    </form>
                 </td>
             </tr>
         </div>
