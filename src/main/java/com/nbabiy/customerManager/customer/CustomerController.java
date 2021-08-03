@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -44,4 +41,23 @@ public class CustomerController {
         customerService.save(customer);
         return "redirect:/customers";
     }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("customer", customerService.getOne(id));
+        return "customers/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@PathVariable("id") Long id,
+                         @ModelAttribute("customer") @Valid Customer customer,
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "customers/edit";
+        }
+        customerService.update(id, customer);
+        return "redirect:/customers";
+    }
+
+
 }

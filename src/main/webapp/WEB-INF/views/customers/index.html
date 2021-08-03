@@ -32,6 +32,7 @@
                 <td th:text="${customer.getEmail()}"></td>
                 <td th:text="${customer.getAddress()}"></td>
                 <td>
+                    <a th:href="@{/customers/{id}/edit(id=${customer.getId()})}">Edit</a>
                 </td>
             </tr>
         </div>
