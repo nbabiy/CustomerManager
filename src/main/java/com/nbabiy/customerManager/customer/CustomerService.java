@@ -2,11 +2,16 @@ package com.nbabiy.customerManager.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @author nazariibabii
  */
-@Component
+@Service
+@Transactional
 public class CustomerService {
 
     private CustomerRepository customerRepository;
@@ -16,4 +21,19 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    public List<Customer> getAll() {
+        return customerRepository.findAll();
+    }
+
+    public Customer getOne(Long id) {
+        return customerRepository.getOne(id);
+    }
+
+    public void save(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+    public void delete(Long id) {
+        customerRepository.deleteById(id);
+    }
 }
