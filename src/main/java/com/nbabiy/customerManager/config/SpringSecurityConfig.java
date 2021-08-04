@@ -40,9 +40,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/customer/**")
+                .antMatchers("/customers/**")
                 .hasRole("USER")
-                .antMatchers("/", "/**").permitAll();
+                .antMatchers("/", "/**").permitAll()
+                .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/customers/index");
     }
 
     @Bean
