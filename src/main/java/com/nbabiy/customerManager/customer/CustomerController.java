@@ -68,9 +68,7 @@ public class CustomerController {
 
     @GetMapping("/search")
     public String search(@RequestParam("keyword") String keyword, Model model) {
-        List<Customer> customerList = customerService.search(keyword);
-        System.out.println(customerList);
-        model.addAttribute("result", customerList);
+        model.addAttribute("result", customerService.search(keyword));
         return "customers/search";
     }
 

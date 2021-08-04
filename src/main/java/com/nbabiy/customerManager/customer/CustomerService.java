@@ -1,6 +1,7 @@
 package com.nbabiy.customerManager.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class CustomerService {
     }
 
     public List<Customer> getAll() {
-        return customerRepository.findAll();
+        return customerRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Customer getOne(Long id) {

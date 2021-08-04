@@ -12,8 +12,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query(value = "SELECT c FROM Customer c WHERE  c.name LIKE :keyword" +
             " OR c.email LIKE :keyword"
-            + " OR c.address LIKE :keyword")
+            + " OR c.address LIKE :keyword ORDER BY c.id")
     List<Customer> findAllByKeyword(@Param("keyword") String keyword);
-
 
 }
